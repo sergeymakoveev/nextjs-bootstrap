@@ -1,0 +1,15 @@
+GET http://localhost:3001/authors
+###
+GET http://localhost:3001/authors?id=1
+###
+GET http://localhost:3001/posts
+###
+GET http://localhost:3001/posts/1
+###
+GET http://localhost:3001/posts?authorId=1
+###
+GET http://localhost:3001/comments
+###
+GET http://localhost:3001/comments?authorId=1
+###
+GET http://localhost:3001/comments?postId=1
