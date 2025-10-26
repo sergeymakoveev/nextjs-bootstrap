@@ -5,9 +5,6 @@
     },
   ],
   "settings": {
-    "editor.codeActionsOnSave": {
-      "source.fixAll.eslint": "explicit",
-    },
     "json.trace.server": "messages",
     "json.schemaDownload.enable": true,
     "typescript.tsdk": "node_modules/typescript/lib",
