@@ -16,6 +16,7 @@ import tseslint from 'typescript-eslint';
 export default defineConfig(
   {
     // config with just ignores is the replacement for `.eslintignore`
+    // It's globally scoped and applies to all files, must set without other rules
     ignores: [
       'node_modules/**',
       '.next/**',
