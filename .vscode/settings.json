@@ -1,0 +1,28 @@
+{
+  "json.schemas": [
+    {
+      "fileMatch": ["package.json"],
+      "url": "https://json.schemastore.org/package.json"
+    },
+    {
+      "fileMatch": [".eslintrc"],
+      "url": "https://json.schemastore.org/eslintrc.json"
+    },
+    {
+      "fileMatch": [".prettierrc"],
+      "url": "https://json.schemastore.org/prettierrc.json"
+    },
+    {
+      "fileMatch": [".stylelintrc"],
+      "url": "https://json.schemastore.org/stylelintrc.json"
+    },
+    {
+      "fileMatch": ["tsconfig.json", "tsconfig.*.json"],
+      "url": "https://json.schemastore.org/tsconfig.json"
+    },
+    {
+      "fileMatch": ["src.monaco-json-editor.json"],
+      "url": "./monaco.json-editor/src/src.schema.json"
+    }
+  ]
+}
