@@ -1,4 +1,7 @@
 module.exports = (request, response, next) => {
-  console.log(request.headers['user-agent']);
+  const isBrowserRequest = request.headers['user-agent'] !== 'node';
+  if (isBrowserRequest) {
+    console.log('browser');
+  }
   next();
 };
