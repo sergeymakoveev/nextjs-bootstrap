@@ -7,7 +7,8 @@ import globals from 'globals';
 import prettierConfig from 'eslint-config-prettier';
 import prettierPlugin from 'eslint-plugin-prettier';
 import importPlugin from 'eslint-plugin-import';
-import nextPlugin from '@next/eslint-plugin-next';
+import nextCoreWebVitals from 'eslint-config-next/core-web-vitals';
+import nextTypescript from 'eslint-config-next/typescript';
 import reactPlugin from 'eslint-plugin-react';
 import reactHooksPlugin from 'eslint-plugin-react-hooks';
 import tseslint from 'typescript-eslint';
@@ -24,6 +25,12 @@ export default defineConfig(
       'build/**',
       'next-env.d.ts',
     ],
+  },
+  {
+    plugins: {
+      // @ts-ignore
+      import: importPlugin,
+    },
   },
   /*
   {
@@ -49,7 +56,7 @@ export default defineConfig(
   */
   {
     files: ['**/*.{js,mjs,cjs,jsx,mjsx,ts,tsx}'],
-    extends: [eslint.configs.recommended, importPlugin.flatConfigs.recommended],
+    extends: [eslint.configs.recommended],
     plugins: {
       '@typescript-eslint': tseslint.plugin,
       // jest: jestPlugin,
@@ -86,6 +93,7 @@ export default defineConfig(
       },
     },
     rules: {
+      ...importPlugin.flatConfigs.recommended.rules,
       '@typescript-eslint/no-floating-promises': 'error',
       '@typescript-eslint/naming-convention': [
         'error',
@@ -136,7 +144,16 @@ export default defineConfig(
       'import/no-named-as-default-member': 'off',
       'import/no-named-as-default': 'off',
       // 'import/no-default-export': 'error',
-      'import/no-unresolved': ['error', { ignore: ['\\.svg\\?react$'] }],
+      'import/no-unresolved': [
+        'error',
+        {
+          ignore: [
+            '\\.svg\\?react$',
+            // Temporary, it fix wrong types in eslint-config-next@16.0.1
+            '^eslint-config-next/.+',
+          ],
+        },
+      ],
       'import/no-unused-modules': 'error',
       'import/first': 'error',
       'import/newline-after-import': 'error',
@@ -191,11 +208,8 @@ export default defineConfig(
     extends: [
       reactPlugin.configs.flat.recommended,
       reactHooksPlugin.configs.flat.recommended,
-      importPlugin.flatConfigs.react,
-      // @ts-ignore
-      nextPlugin.flatConfig.recommended,
-      // @ts-ignore
-      nextPlugin.flatConfig.coreWebVitals,
+      nextTypescript,
+      nextCoreWebVitals,
     ],
     languageOptions: {
       ...reactPlugin.configs.flat.recommended.languageOptions,
@@ -205,17 +219,16 @@ export default defineConfig(
       'react-hooks': reactHooksPlugin,
     },
     rules: {
+      ...importPlugin.flatConfigs.react.rules,
       'react/prop-types': 'off',
       'react/display-name': 'off',
     },
   },
   {
     files: ['**/*.{ts,tsx}'],
-    extends: [
-      tseslint.configs.recommended,
-      importPlugin.flatConfigs.typescript,
-    ],
+    extends: [tseslint.configs.recommended],
     rules: {
+      ...importPlugin.flatConfigs.typescript.rules,
       '@typescript-eslint/consistent-type-imports': [
         'error',
         {
