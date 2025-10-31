@@ -1,7 +1,8 @@
 import React from 'react';
 
-import { type Post } from '../page';
-import { Post as PostComponent } from './post.component';
+import type { Post } from '@/store/models';
+
+import { PostComponent } from '../../../ui-components/post.component';
 
 export async function generateStaticParams() {
   const response = await fetch('http://localhost:3001/posts');
