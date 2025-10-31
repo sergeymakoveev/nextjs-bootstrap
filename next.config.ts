@@ -17,9 +17,6 @@ const nextConfig: NextConfig = {
   compiler: {
     styledComponents: true,
   },
-  eslint: {
-    dirs: ['src'],
-  },
   turbopack: {
     rules: {
       '*.svg': {
