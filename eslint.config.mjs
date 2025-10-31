@@ -216,7 +216,12 @@ export default defineConfig(
       importPlugin.flatConfigs.typescript,
     ],
     rules: {
-      '@typescript-eslint/consistent-type-imports': 'error',
+      '@typescript-eslint/consistent-type-imports': [
+        'error',
+        {
+          fixStyle: 'inline-type-imports',
+        },
+      ],
       '@typescript-eslint/no-redeclare': 'error',
     },
   },
