@@ -3,7 +3,7 @@ import React from 'react';
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 
-import { ButtonBack } from '@/ui-client/button-back/button-back.component';
+import { ButtonBack } from '@/ui-client';
 
 import { StoreProvider, StyledRegistry, Navigation } from './_components';
 
