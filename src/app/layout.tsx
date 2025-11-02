@@ -6,7 +6,8 @@ import { Geist, Geist_Mono } from 'next/font/google';
 import { ButtonBack } from '@/ui-client';
 import { Navigation } from '@/ui-server';
 
-import { StoreProvider, StyledComponentsRegistry } from './_components';
+import { StyledComponentsRegistry } from './styled-components-registry';
+import { StoreProvider } from './store-provider';
 
 import './globals.css';
 
