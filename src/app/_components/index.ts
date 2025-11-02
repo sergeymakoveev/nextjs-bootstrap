@@ -1,2 +1,2 @@
 export * from './store-provider';
-export * from './styled-component-registry';
+export * from './styled-components-registry';

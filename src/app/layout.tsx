@@ -6,7 +6,7 @@ import { Geist, Geist_Mono } from 'next/font/google';
 import { ButtonBack } from '@/ui-client';
 import { Navigation } from '@/ui-server';
 
-import { StoreProvider, StyledRegistry } from './_components';
+import { StoreProvider, StyledComponentsRegistry } from './_components';
 
 import './globals.css';
 
@@ -35,13 +35,13 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <StyledRegistry>
+        <StyledComponentsRegistry>
           <StoreProvider>
             <Navigation />
             <ButtonBack />
             {children}
           </StoreProvider>
-        </StyledRegistry>
+        </StyledComponentsRegistry>
       </body>
     </html>
   );
