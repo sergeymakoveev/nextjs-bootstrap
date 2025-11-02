@@ -1,0 +1,364 @@
+openapi: 3.0.0
+info:
+  title: Blog API
+  description: API для управления постами, комментариями и авторами
+  version: 1.0.0
+
+servers:
+  - url: http://localhost:3000/api
+    description: Локальный сервер разработки
+
+paths:
+  /posts:
+    get:
+      summary: Получить все посты
+      responses:
+        "200":
+          description: Список постов
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Post"
+    post:
+      summary: Создать новый пост
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/PostInput"
+      responses:
+        "201":
+          description: Созданный пост
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Post"
+
+  /posts/{id}:
+    get:
+      summary: Получить пост по ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Пост
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Post"
+        "404":
+          description: Пост не найден
+    put:
+      summary: Обновить пост по ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/PostInput"
+      responses:
+        "200":
+          description: Обновленный пост
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Post"
+        "404":
+          description: Пост не найден
+    delete:
+      summary: Удалить пост по ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "204":
+          description: Пост удален
+        "404":
+          description: Пост не найден
+
+  /comments:
+    get:
+      summary: Получить все комментарии
+      responses:
+        "200":
+          description: Список комментариев
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Comment"
+    post:
+      summary: Создать новый комментарий
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CommentInput"
+      responses:
+        "201":
+          description: Созданный комментарий
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Comment"
+
+  /comments/{id}:
+    get:
+      summary: Получить комментарий по ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Комментарий
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Comment"
+        "404":
+          description: Комментарий не найден
+    put:
+      summary: Обновить комментарий по ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CommentInput"
+      responses:
+        "200":
+          description: Обновленный комментарий
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Comment"
+        "404":
+          description: Комментарий не найден
+    delete:
+      summary: Удалить комментарий по ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "204":
+          description: Комментарий удален
+        "404":
+          description: Комментарий не найден
+
+  /authors:
+    get:
+      summary: Получить всех авторов
+      responses:
+        "200":
+          description: Список авторов
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Author"
+    post:
+      summary: Создать нового автора
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AuthorInput"
+      responses:
+        "201":
+          description: Созданный автор
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Author"
+
+  /authors/{id}:
+    get:
+      summary: Получить автора по ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Автор
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Author"
+        "404":
+          description: Автор не найден
+    put:
+      summary: Обновить автора по ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AuthorInput"
+      responses:
+        "200":
+          description: Обновленный автор
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Author"
+        "404":
+          description: Автор не найден
+    delete:
+      summary: Удалить автора по ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "204":
+          description: Автор удален
+        "404":
+          description: Автор не найден
+
+components:
+  schemas:
+    Post:
+      type: object
+      properties:
+        id:
+          type: integer
+        title:
+          type: string
+        content:
+          type: string
+        likeCount:
+          type: integer
+        authorId:
+          type: integer
+        date:
+          type: string
+          format: date
+      required:
+        - id
+        - title
+        - content
+        - likeCount
+        - authorId
+        - date
+
+    PostInput:
+      type: object
+      properties:
+        title:
+          type: string
+        content:
+          type: string
+        authorId:
+          type: integer
+        date:
+          type: string
+          format: date
+      required:
+        - title
+        - content
+        - authorId
+        - date
+
+    Comment:
+      type: object
+      properties:
+        id:
+          type: integer
+        postId:
+          type: integer
+        authorId:
+          type: integer
+        content:
+          type: string
+        likeCount:
+          type: integer
+        date:
+          type: string
+          format: date-time
+      required:
+        - id
+        - postId
+        - authorId
+        - content
+        - likeCount
+        - date
+
+    CommentInput:
+      type: object
+      properties:
+        postId:
+          type: integer
+        authorId:
+          type: integer
+        content:
+          type: string
+        date:
+          type: string
+          format: date-time
+      required:
+        - postId
+        - authorId
+        - content
+        - date
+
+    Author:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+      required:
+        - id
+        - name
+
+    AuthorInput:
+      type: object
+      properties:
+        name:
+          type: string
+      required:
+        - name
