@@ -19,7 +19,7 @@ export const PostComponent: React.FC<PostProps> = ({
   return (
     <section>
       <h1>Post</h1>
-      <Link href={`/autors/${authorId}`}>{author.name}</Link>
+      <Link href={`/authors/${authorId}`}>{author.name}</Link>
       <h2>{title}</h2>
       <article>{content}</article>
       <p>{date}</p>
