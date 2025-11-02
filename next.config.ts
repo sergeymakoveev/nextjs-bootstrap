@@ -2,7 +2,7 @@ import type { NextConfig } from 'next';
 import BundleAnalyzer from '@next/bundle-analyzer';
 
 const withBundleAnalyzer = BundleAnalyzer({
-  enabled: process.env.NEXTJS_BUNDLE_ANALYZE === 'true',
+  enabled: process.env.NEXT_PUBLIC_BUNDLE_ANALYZE === 'true',
 });
 
 const nextConfig: NextConfig = {
@@ -17,6 +17,13 @@ const nextConfig: NextConfig = {
   compiler: {
     styledComponents: true,
   },
+  rewrites: () =>
+    Promise.resolve([
+      {
+        source: '/api/:path*',
+        destination: 'http://localhost:3001/:path*',
+      },
+    ]),
   turbopack: {
     rules: {
       '*.svg': {
