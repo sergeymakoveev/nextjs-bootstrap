@@ -3,7 +3,7 @@ import React from 'react';
 import Link from 'next/link';
 
 import { type Post as PostProps } from '@/store/models';
-import { getAuthorById } from '@/api/http';
+import { getAuthor } from '@/api/http';
 import { ButtonLike } from '@/ui-client';
 
 export const PostComponent: React.FC<PostProps> = ({
@@ -14,7 +14,7 @@ export const PostComponent: React.FC<PostProps> = ({
   id,
   likeCount,
 }) => {
-  const author = React.use(getAuthorById(authorId));
+  const author = React.use(getAuthor(authorId));
 
   return (
     <section>

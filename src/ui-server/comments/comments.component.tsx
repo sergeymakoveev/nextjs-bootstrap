@@ -3,7 +3,7 @@ import React from 'react';
 import Link from 'next/link';
 
 import { type Comment } from '@/store/models';
-import { getAuthorById } from '@/api/http';
+import { getAuthor } from '@/api/http';
 
 type CommentsComponentProps = { items: Comment[] };
 
@@ -23,7 +23,7 @@ export const CommentsComponent: React.FC<CommentsComponentProps> = ({
     <section>
       <h1>Comments</h1>
       {items.map(async (comment) => {
-        const author = await getAuthorById(comment.authorId);
+        const author = await getAuthor(comment.authorId);
         return (
           <section key={comment.id}>
             <p>

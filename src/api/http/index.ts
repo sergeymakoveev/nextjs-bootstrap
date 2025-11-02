@@ -8,5 +8,5 @@ export const fetch = (
   init?: RequestInit,
 ): Promise<Response> => global.fetch(getBackendURL(input), init);
 
-export const getAuthorById = (authorId: number): Promise<Author> =>
+export const getAuthor = (authorId: number): Promise<Author> =>
   fetch(`/api/authors/${authorId}`).then<Author>((response) => response.json());
