@@ -4,8 +4,9 @@ import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 
 import { ButtonBack } from '@/ui-client';
+import { Navigation } from '@/ui-server';
 
-import { StoreProvider, StyledRegistry, Navigation } from './_components';
+import { StoreProvider, StyledRegistry } from './_components';
 
 import './globals.css';
 
