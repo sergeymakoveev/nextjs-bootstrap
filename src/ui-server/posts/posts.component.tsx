@@ -2,7 +2,8 @@ import React from 'react';
 
 import Link from 'next/link';
 
-import { getAuthorById, type Post } from '@/store/models';
+import { type Post } from '@/store/models';
+import { getAuthorById } from '@/api/http';
 
 type PostsComponentProps = { items: Post[] };
 

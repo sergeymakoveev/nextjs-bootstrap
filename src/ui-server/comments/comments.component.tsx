@@ -2,7 +2,8 @@ import React from 'react';
 
 import Link from 'next/link';
 
-import { getAuthorById, type Comment } from '@/store/models';
+import { type Comment } from '@/store/models';
+import { getAuthorById } from '@/api/http';
 
 type CommentsComponentProps = { items: Comment[] };
 

@@ -2,7 +2,8 @@ import React from 'react';
 
 import Link from 'next/link';
 
-import { getAuthorById, type Post as PostProps } from '@/store/models';
+import { type Post as PostProps } from '@/store/models';
+import { getAuthorById } from '@/api/http';
 import { ButtonLike } from '@/ui-client';
 
 export const PostComponent: React.FC<PostProps> = ({
