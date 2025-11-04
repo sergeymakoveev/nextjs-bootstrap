@@ -40,6 +40,7 @@ erDiagram
 - GET /api/posts/{id} - Получить пост по ID
 - POST /api/posts - Создать новый пост
 - PUT /api/posts/{id} - Обновить пост по ID
+- PATCH /api/posts/{id} - Частично обновить пост по ID
 - DELETE /api/posts/{id} - Удалить пост по ID
 
 ### Комментарии
@@ -48,6 +49,7 @@ erDiagram
 - GET /api/comments/{id} - Получить комментарий по ID
 - POST /api/comments - Создать новый комментарий
 - PUT /api/comments/{id} - Обновить комментарий по ID
+- PATCH /api/comments/{id} - Частично обновить комментарий по ID
 - DELETE /api/comments/{id} - Удалить комментарий по ID
 
 ### Авторы
@@ -56,4 +58,5 @@ erDiagram
 - GET /api/authors/{id} - Получить автора по ID
 - POST /api/authors - Создать нового автора
 - PUT /api/authors/{id} - Обновить автора по ID
+- PATCH /api/authors/{id} - Частично обновить автора по ID
 - DELETE /api/authors/{id} - Удалить автора по ID

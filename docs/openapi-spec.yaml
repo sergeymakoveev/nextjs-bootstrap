@@ -78,6 +78,29 @@ paths:
                 $ref: "#/components/schemas/Post"
         "404":
           description: Пост не найден
+    patch:
+      summary: Частично обновить пост по ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/PostInput"
+      responses:
+        "200":
+          description: Обновленный пост
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Post"
+        "404":
+          description: Пост не найден
     delete:
       summary: Удалить пост по ID
       parameters:
@@ -140,6 +163,29 @@ paths:
           description: Комментарий не найден
     put:
       summary: Обновить комментарий по ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CommentInput"
+      responses:
+        "200":
+          description: Обновленный комментарий
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Comment"
+        "404":
+          description: Комментарий не найден
+    patch:
+      summary: Частично обновить комментарий по ID
       parameters:
         - name: id
           in: path
