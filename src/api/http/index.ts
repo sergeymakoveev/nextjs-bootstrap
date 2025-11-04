@@ -11,7 +11,7 @@ const getBackendURL = (path: string | URL, searchParams?: object): URL => {
   return url;
 };
 
-export const fetch = (
+const fetch = (
   input: string | URL,
   initExt?: RequestInit & { searchParams?: object },
 ): Promise<Response> => {
@@ -21,13 +21,15 @@ export const fetch = (
 
 const getItems =
   <T extends object>(input: string | URL) =>
-  (searchParams?: Partial<T>): Promise<T[]> =>
-    fetch(input, { searchParams }).then<T[]>((response) => response.json());
+  (searchParams?: Partial<T>, init?: RequestInit): Promise<T[]> =>
+    fetch(input, { ...init, searchParams }).then<T[]>((response) =>
+      response.json(),
+    );
 
 const getItem =
   <T>(input: string | URL) =>
-  (id: number | string): Promise<T> =>
-    fetch(`${input}/${id}`).then<T>((response) => response.json());
+  (id: number | string, init?: RequestInit): Promise<T> =>
+    fetch(`${input}/${id}`, init).then<T>((response) => response.json());
 
 export const getAuthors = getItems<Author>('/api/authors');
 export const getAuthor = getItem<Author>('/api/authors');

@@ -3,14 +3,16 @@ import React from 'react';
 import Link from 'next/link';
 
 import type { Author } from '@/store/models';
-import { fetch } from '@/api/http';
+import { getAuthors } from '@/api/http';
 
-export const dynamic = 'force-dynamic';
+// ƒ  (Dynamic)  server-rendered on demand
+// export const dynamic = 'force-dynamic';
 
 const Authors: React.FC = async () => {
-  const authors: Author[] = await fetch('/api/authors', {
-    // cache: 'no-store',
-  }).then<Author[]>((response) => response.json());
+  const authors: Author[] = await getAuthors(
+    undefined,
+    { cache: 'no-store' }, // ƒ  (Dynamic)  server-rendered on demand
+  );
 
   return (
     <React.Fragment>
