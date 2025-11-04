@@ -1,12 +1,39 @@
-import { type Author } from '@/store/models';
+import { type Post, type Author, type Comment } from '@/store/models';
 
-const getBackendURL = (path: string | URL) =>
-  new URL(path, process.env.NEXT_PUBLIC_BACKEND_BASE_URL).toString();
+const getBackendURL = (path: string | URL, searchParams?: object): URL => {
+  const url = new URL(path, process.env.NEXT_PUBLIC_BACKEND_BASE_URL);
+  if (searchParams) {
+    const searchParamsPrepared = Object.fromEntries(
+      Object.entries(searchParams).map(([key, value]) => [key, `${value}`]),
+    );
+    url.search = new URLSearchParams(searchParamsPrepared).toString();
+  }
+  return url;
+};
 
 export const fetch = (
   input: string | URL,
-  init?: RequestInit,
-): Promise<Response> => global.fetch(getBackendURL(input), init);
+  initExt?: RequestInit & { searchParams?: object },
+): Promise<Response> => {
+  const { searchParams, ...init } = initExt || {};
+  return global.fetch(getBackendURL(input, searchParams), init);
+};
 
-export const getAuthor = (authorId: number): Promise<Author> =>
-  fetch(`/api/authors/${authorId}`).then<Author>((response) => response.json());
+const getItems =
+  <T extends object>(input: string | URL) =>
+  (searchParams?: Partial<T>): Promise<T[]> =>
+    fetch(input, { searchParams }).then<T[]>((response) => response.json());
+
+const getItem =
+  <T>(input: string | URL) =>
+  (id: number | string): Promise<T> =>
+    fetch(`${input}/${id}`).then<T>((response) => response.json());
+
+export const getAuthors = getItems<Author>('/api/authors');
+export const getAuthor = getItem<Author>('/api/authors');
+
+export const getPosts = getItems<Post>('/api/posts');
+export const getPost = getItem<Post>('/api/posts');
+
+export const getComments = getItems<Comment>('/api/comments');
+export const getComment = getItem<Comment>('/api/comments');

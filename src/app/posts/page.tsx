@@ -1,12 +1,10 @@
 import React from 'react';
 
-import type { Post } from '@/store/models';
 import { PostsComponent } from '@/ui-server';
-import { fetch } from '@/api/http';
+import { getPosts } from '@/api/http';
 
 const PostsPage: React.FC = async () => {
-  const res = await fetch('/api/posts');
-  const posts: Post[] = await res.json();
+  const posts = await getPosts();
 
   return <PostsComponent items={posts} />;
 };
