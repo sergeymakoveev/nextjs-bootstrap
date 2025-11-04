@@ -6,11 +6,13 @@
     "node": "22.12.0"
   },
   "scripts": {
+    "api:generate:openapi-typescript-codegen": "npx openapi-typescript-codegen --input ./src/api/http/openapi-spec.yaml --output ./src/api/http/api-openapi-typescript-codegen",
+    "api:generate:openapitools": "npx @openapitools/openapi-generator-cli generate -i ./src/api/http/openapi-spec.yaml -g typescript-axios -o ./src/api/http/api-openapitools",
     "backend:nodemon": "nodemon --watch ./backend --exec 'json-server ./backend/db.json --port 3001 --middlewares ./backend/server.middleware.js'",
-    "backend": "json-server ./backend/db.json --port 3001 --middlewares ./backend/server.middleware.js",
+    "backend": "json-server ./backend/db.json --port 3001 --routes ./backend/server.routes.json --middlewares ./backend/server.middleware.js",
     "dev": "next dev --turbopack",
     "build": "next build --turbopack",
-    "build:webpack": "NEXTJS_BUNDLE_ANALYZE=true next build",
+    "build:analyze": "NEXT_PUBLIC_BUNDLE_ANALYZE=true next build",
     "start": "next start",
     "start:manually": "npx http-server ./.next/server/app",
     "lint": "eslint",
