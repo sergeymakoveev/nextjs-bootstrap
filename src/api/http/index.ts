@@ -31,11 +31,27 @@ const getItem =
   (id: number | string, init?: RequestInit): Promise<T> =>
     fetch(`${input}/${id}`, init).then<T>((response) => response.json());
 
+const patchItem =
+  <T>(input: string | URL) =>
+  (id: number | string, data: Partial<T>): Promise<T> => {
+    const init: RequestInit = {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    };
+    return fetch(`${input}/${id}`, init).then<T>((response) => response.json());
+  };
+
 export const getAuthors = getItems<Author>('/api/authors');
 export const getAuthor = getItem<Author>('/api/authors');
+export const patchAuthor = patchItem<Author>('/api/authors');
 
 export const getPosts = getItems<Post>('/api/posts');
 export const getPost = getItem<Post>('/api/posts');
+export const patchPost = patchItem<Post>('/api/posts');
 
 export const getComments = getItems<Comment>('/api/comments');
 export const getComment = getItem<Comment>('/api/comments');
+export const patchComment = patchItem<Comment>('/api/comments');
