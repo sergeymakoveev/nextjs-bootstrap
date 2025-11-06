@@ -12,6 +12,7 @@ paths:
   /posts:
     get:
       summary: Получить все посты
+      operationId: getPosts
       responses:
         "200":
           description: Список постов
@@ -23,6 +24,7 @@ paths:
                   $ref: "#/components/schemas/Post"
     post:
       summary: Создать новый пост
+      operationId: createPost
       requestBody:
         required: true
         content:
@@ -40,6 +42,7 @@ paths:
   /posts/{id}:
     get:
       summary: Получить пост по ID
+      operationId: getPost
       parameters:
         - name: id
           in: path
@@ -57,6 +60,7 @@ paths:
           description: Пост не найден
     put:
       summary: Обновить пост по ID
+      operationId: updatePost
       parameters:
         - name: id
           in: path
@@ -80,6 +84,7 @@ paths:
           description: Пост не найден
     patch:
       summary: Частично обновить пост по ID
+      operationId: patchPost
       parameters:
         - name: id
           in: path
@@ -103,6 +108,7 @@ paths:
           description: Пост не найден
     delete:
       summary: Удалить пост по ID
+      operationId: deletePost
       parameters:
         - name: id
           in: path
@@ -118,6 +124,7 @@ paths:
   /comments:
     get:
       summary: Получить все комментарии
+      operationId: getComments
       responses:
         "200":
           description: Список комментариев
@@ -129,6 +136,7 @@ paths:
                   $ref: "#/components/schemas/Comment"
     post:
       summary: Создать новый комментарий
+      operationId: createComment
       requestBody:
         required: true
         content:
@@ -146,6 +154,7 @@ paths:
   /comments/{id}:
     get:
       summary: Получить комментарий по ID
+      operationId: getComment
       parameters:
         - name: id
           in: path
@@ -163,6 +172,7 @@ paths:
           description: Комментарий не найден
     put:
       summary: Обновить комментарий по ID
+      operationId: updateComment
       parameters:
         - name: id
           in: path
@@ -186,6 +196,7 @@ paths:
           description: Комментарий не найден
     patch:
       summary: Частично обновить комментарий по ID
+      operationId: patchComment
       parameters:
         - name: id
           in: path
@@ -209,6 +220,7 @@ paths:
           description: Комментарий не найден
     delete:
       summary: Удалить комментарий по ID
+      operationId: deleteComment
       parameters:
         - name: id
           in: path
@@ -224,6 +236,7 @@ paths:
   /authors:
     get:
       summary: Получить всех авторов
+      operationId: getAuthors
       responses:
         "200":
           description: Список авторов
@@ -235,6 +248,7 @@ paths:
                   $ref: "#/components/schemas/Author"
     post:
       summary: Создать нового автора
+      operationId: createAuthor
       requestBody:
         required: true
         content:
@@ -252,6 +266,7 @@ paths:
   /authors/{id}:
     get:
       summary: Получить автора по ID
+      operationId: getAuthor
       parameters:
         - name: id
           in: path
@@ -269,6 +284,7 @@ paths:
           description: Автор не найден
     put:
       summary: Обновить автора по ID
+      operationId: updateAuthor
       parameters:
         - name: id
           in: path
@@ -292,6 +308,7 @@ paths:
           description: Автор не найден
     delete:
       summary: Удалить автора по ID
+      operationId: deleteAuthor
       parameters:
         - name: id
           in: path
