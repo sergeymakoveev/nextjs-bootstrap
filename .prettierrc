@@ -1,0 +1,29 @@
+{
+  "printWidth": 80,
+  "semi": true,
+  "tabWidth": 2,
+  "bracketSameLine": false,
+  "singleQuote": true,
+  "overrides": [
+    {
+      "files": [".prettierrc"],
+      "options": {
+        "parser": "json"
+      }
+    },
+    {
+      "files": ["*.svg"],
+      "options": {
+        "parser": "html"
+      }
+    },
+    {
+      "files": ["*.yaml"],
+      "options": {
+        "singleQuote": false,
+        "bracketSpacing": false,
+        "proseWrap": "preserve"
+      }
+    }
+  ]
+}
