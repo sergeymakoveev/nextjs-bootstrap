@@ -5,7 +5,7 @@ const withBundleAnalyzer = BundleAnalyzer({
   enabled: process.env.NEXT_PUBLIC_BUNDLE_ANALYZE === 'true',
 });
 
-const nextConfig: NextConfig = {
+const NEXT_CONFIG: NextConfig = {
   // Enable Server Side Rendering
   reactStrictMode: true,
   // Enable React Server Components
@@ -42,4 +42,4 @@ const nextConfig: NextConfig = {
   },
 };
 
-export default withBundleAnalyzer(nextConfig);
+export default withBundleAnalyzer(NEXT_CONFIG);
