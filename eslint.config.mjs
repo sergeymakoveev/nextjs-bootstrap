@@ -136,8 +136,9 @@ export default defineConfig(
           leadingUnderscore: 'allow',
         },
         {
-          selector: 'variableLike',
-          format: ['camelCase', 'UPPER_CASE'],
+          selector: 'variable',
+          modifiers: ['global'],
+          format: ['UPPER_CASE'],
           leadingUnderscore: 'allow',
         },
       ],
