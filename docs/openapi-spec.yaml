@@ -13,6 +13,57 @@ paths:
     get:
       summary: Получить все посты
       operationId: getPosts
+      parameters:
+        - name: title
+          in: query
+          description: Фильтрация по заголовку поста
+          schema:
+            type: string
+        - name: content
+          in: query
+          description: Фильтрация по содержимому поста
+          schema:
+            type: string
+        - name: likeCount
+          in: query
+          description: Фильтрация по количеству лайков
+          schema:
+            type: integer
+        - name: authorId
+          in: query
+          description: Фильтрация по ID автора
+          schema:
+            type: integer
+        - name: date
+          in: query
+          description: Фильтрация по дате создания
+          schema:
+            type: string
+            format: date
+        - name: sortBy
+          in: query
+          description: Поле для сортировки (title, content, likeCount, authorId, date)
+          schema:
+            type: string
+        - name: sortOrder
+          in: query
+          description: Порядок сортировки (asc или desc)
+          schema:
+            type: string
+            enum: [asc, desc]
+        - name: page
+          in: query
+          description: Номер страницы (по умолчанию 1)
+          schema:
+            type: integer
+            minimum: 1
+        - name: limit
+          in: query
+          description: Количество элементов на странице (по умолчанию 10)
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 100
       responses:
         "200":
           description: Список постов
@@ -125,6 +176,57 @@ paths:
     get:
       summary: Получить все комментарии
       operationId: getComments
+      parameters:
+        - name: postId
+          in: query
+          description: Фильтрация по ID поста
+          schema:
+            type: integer
+        - name: authorId
+          in: query
+          description: Фильтрация по ID автора
+          schema:
+            type: integer
+        - name: content
+          in: query
+          description: Фильтрация по содержимому комментария
+          schema:
+            type: string
+        - name: likeCount
+          in: query
+          description: Фильтрация по количеству лайков
+          schema:
+            type: integer
+        - name: date
+          in: query
+          description: Фильтрация по дате создания
+          schema:
+            type: string
+            format: date-time
+        - name: sortBy
+          in: query
+          description: Поле для сортировки (postId, authorId, content, likeCount, date)
+          schema:
+            type: string
+        - name: sortOrder
+          in: query
+          description: Порядок сортировки (asc или desc)
+          schema:
+            type: string
+            enum: [asc, desc]
+        - name: page
+          in: query
+          description: Номер страницы (по умолчанию 1)
+          schema:
+            type: integer
+            minimum: 1
+        - name: limit
+          in: query
+          description: Количество элементов на странице (по умолчанию 10)
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 100
       responses:
         "200":
           description: Список комментариев
@@ -237,6 +339,36 @@ paths:
     get:
       summary: Получить всех авторов
       operationId: getAuthors
+      parameters:
+        - name: name
+          in: query
+          description: Фильтрация по имени автора
+          schema:
+            type: string
+        - name: sortBy
+          in: query
+          description: Поле для сортировки (name)
+          schema:
+            type: string
+        - name: sortOrder
+          in: query
+          description: Порядок сортировки (asc или desc)
+          schema:
+            type: string
+            enum: [asc, desc]
+        - name: page
+          in: query
+          description: Номер страницы (по умолчанию 1)
+          schema:
+            type: integer
+            minimum: 1
+        - name: limit
+          in: query
+          description: Количество элементов на странице (по умолчанию 10)
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 100
       responses:
         "200":
           description: Список авторов
