@@ -11,11 +11,12 @@ import { getAuthors } from '@/api/http';
 const Authors: React.FC = async () => {
   const authors: Author[] = await getAuthors(
     undefined,
-    { cache: 'no-store' }, // ƒ  (Dynamic)  server-rendered on demand
+    // { cache: 'no-store' }, // ƒ  (Dynamic)  server-rendered on demand
+    // { cache: 'force-cache' },
   );
 
   return (
-    <React.Fragment>
+    <section>
       <h1>authors [SSG]</h1>
       <ul>
         {authors.map((author) => (
@@ -24,7 +25,7 @@ const Authors: React.FC = async () => {
           </li>
         ))}
       </ul>
-    </React.Fragment>
+    </section>
   );
 };
 
