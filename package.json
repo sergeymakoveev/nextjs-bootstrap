@@ -6,10 +6,7 @@
     "node": "22.21.1"
   },
   "scripts": {
-    "api:generate:openapi-typescript-codegen": "npx openapi-typescript-codegen --input ./src/api/http/openapi-spec.yaml --output ./src/api/http/api-openapi-typescript-codegen --client fetch",
-    "api:generate:openapitools": "npx @openapitools/openapi-generator-cli generate -i ./src/api/http/openapi-spec.yaml -g typescript-fetch -o ./src/api/http/api-openapitools",
-    "api:generate:openapi-typescript": "npx openapi-typescript ./src/api/http/openapi-spec.yaml -o ./src/api/http/api-openapi-typescript/index.ts",
-    "api:generate": "orval --config ./src/api/http/api-generate-config.ts",
+    "api:generate": "npx orval --input ./src/api/http/api-openapi-spec.yaml --output ./src/api/http/api-generated.ts",
     "backend:nodemon": "nodemon --watch ./backend --exec 'json-server ./backend/db.json --port 3001 --middlewares ./backend/server.middleware.js'",
     "backend": "json-server ./backend/db.js --port 3001 --routes ./backend/server.routes.json --middlewares ./backend/server.middleware.js",
     "dev": "next dev --turbopack",
