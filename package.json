@@ -1,9 +1,9 @@
 {
-  "name": "my-next-app",
+  "name": "nextjs-bootstrap",
   "version": "0.1.0",
   "private": true,
   "engines": {
-    "node": "22.21.1"
+    "node": "24.10.0"
   },
   "scripts": {
     "api:generate": "npx orval --input ./src/api/http/api-openapi-spec.yaml --output ./src/api/http/api-generated.ts",
