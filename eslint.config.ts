@@ -26,7 +26,7 @@ export default defineConfig(
   },
   {
     plugins: {
-      // @ts-ignore
+      // @ts-expect-error `importPlugin` has incompatible types
       import: importPlugin,
     },
   },
